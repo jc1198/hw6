@@ -2,13 +2,38 @@ import re
 import unittest
 
 def sumNums(fileName):
-    pass
+    inFile = open(fileName, 'r')
+    lines = inFile.read()
+    numbers = []
+    find_num = re.findall('[0-9]+', lines)
+    print(find_num)
+    numbers = [int(nums) for nums in find_num]
+    amount = sum(numbers)
+    return amount
+
+
 
 def countWord(fileName, word):
-    pass
+    inFile = open(fileName, 'r')
+    read = inFile.read()
+    find_word = []
+    # count = 0
+    file = read.strip()
+    find_word = re.findall(word+('\\b'),file, re.IGNORECASE)
+    print(find_word)
+    total = len(find_word)
+    return total
+
+countWord("regex_sum_42.txt",'computer')
 
 def listURLs(fileName):
-    pass
+    inFile = open(fileName, 'r')
+    file = inFile.read()
+    find_URL = re.findall('www.', file)
+    return find_URL
+
+listURLs("regex_sum_42.txt")
+
 
 
 class TestHW6(unittest.TestCase):
